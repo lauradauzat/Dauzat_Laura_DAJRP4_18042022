@@ -54,7 +54,7 @@
 
       <div class="bground">
         <div class="content">
-          <span id="closeModal" onclick="closeModal()" class="close"></span>
+          <span id="closeModal" class="close"></span>
           <div class="modal-body">
             <form
               name="reserve"
@@ -71,7 +71,11 @@
                   id="first"
                   name="first"
                   minlength="2"
-                /><br>
+                  required
+                />
+                <p class="error">
+                </p>
+                
               </div>
               <div
                 class="formData">
@@ -81,7 +85,10 @@
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                  required
+                />
+                <p class="error">
+                </p>
               </div>
               <div
                 class="formData">
@@ -91,7 +98,10 @@
                   type="email"
                   id="email"
                   name="email"
-                /><br>
+                  required
+                />
+                <p class="error">
+                </p>
               </div>
               <div
                 class="formData">
@@ -101,7 +111,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br>
+                />
               </div>
               <div
                 class="formData">
@@ -185,7 +195,9 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
+                  name="cu"
                   checked
+                  required
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
