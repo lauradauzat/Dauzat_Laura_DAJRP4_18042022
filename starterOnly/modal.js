@@ -39,6 +39,7 @@ function closeModal() {
 //logique de controle des données 
 inputs.forEach((input) => input.addEventListener("change", checkValue));
 
+
 //setting checks for inputs 
 let firstOk = false; 
 let lastOk = false; 
@@ -58,31 +59,26 @@ nameReg = /[a-zA-Z]/;
 
 
 function checkValue(e) {
- 
   const value = e.target.value
   switch(e.target.name) {
     case "first" : 
       console.log('Switch first'); 
+
       console.log(e.target.value.length);
         if((e.target.value.length) > 1 && (value.match(nameReg))) {
           firstOk = true;
-          e.target.nextElementSibling.textContent = "" ;
+          
         } else {
           firstOk = false;
-          console.log(e.target);
-          console.log(e.target.nextElementSibling);
-          e.target.nextElementSibling.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom." ;
+          
         } 
         console.log(firstOk);
         break;
     case "last" : 
         if((e.target.value.length) > 1 && (value.match(nameReg))) {
           lastOk = true;
-          e.target.nextElementSibling.textContent = "" ;
         } else {
           lastOk = false;
-          e.target.nextElementSibling.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom." ;
-
         };
         console.log(lastOk);
         break;
@@ -90,11 +86,8 @@ function checkValue(e) {
         console.log(value);
         if (value.match(emailReg)) {
           emailOk = true; 
-          e.target.nextElementSibling.textContent = "" ;
         } else {
           emailOk = false; 
-          e.target.nextElementSibling.textContent = "Veuillez entrer une adresse mail correcte" ;
-
         };
         console.log('email ' + emailOk);
         break;
