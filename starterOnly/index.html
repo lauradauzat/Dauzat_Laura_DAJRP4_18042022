@@ -18,14 +18,14 @@
     </div>
     <div class="main-navbar">
       
-  
+      <a href="javascript:void(0);" class="icon" onclick="editNav()">
+        <i class="fa fa-bars"></i>
+      </a>
       <a href="#"class="active"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
+      
     </div>
     </div>
   </div>
@@ -58,19 +58,19 @@
           <div class="modal-body">
             <form
               name="reserve"
-              action="index.html"
-              method="get"
-              onsubmit="return validate();"
+              action="#"
+              id="form"
             >
               <div
-                class="formData" >
+                class="formData" id="divFirst" data-error-visible="false" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom."  >
                 <label for="first">Prénom</label><br>
                 <input
-                  class="text-control"
+                  class="text-control "
                   type="text"
                   id="first"
                   name="first"
                   minlength="2"
+                  
                  
                   required
                 />
@@ -78,7 +78,7 @@
                 
               </div>
               <div
-                class="formData">
+                class="formData" id="divLast" data-error-visible="false" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
@@ -90,7 +90,7 @@
             
               </div>
               <div
-                class="formData">
+                class="formData" id="divMail" data-error-visible="false" data-error="Veuillez entrer un e-mail valide.">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
@@ -102,7 +102,7 @@
             
               </div>
               <div
-                class="formData">
+                class="formData" id="divBirth" data-error-visible="false" data-error="Vous devez entrer votre date de naissance.">
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -112,13 +112,13 @@
                 />
               </div>
               <div
-                class="formData">
+                class="formData" id="divQuantity" data-error-visible="false" data-error="Merci de compléter ce champ.">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData" id="divLocation" data-error-visible="false" data-error="Vous devez sélectionner une ville.">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -188,7 +188,7 @@
               </div>
 
               <div
-                class="formData">
+                class="formData" id="divCu" data-error-visible="false" data-error="Vous devez accepter les conditions d'utilisations.">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -211,13 +211,18 @@
 
                 <br>
               </div>
-              <input
+              <button
                 class="btn-submit"
                 type="submit"
                 class="button"
-                value="C'est parti"
-              />
+                
+              >C'est parti </button>
             </form>
+            <div id="confirmation" style="display:none">
+              <h3>Merci pour votre inscription</h3>
+              <button class="btn-submit" onclick="closeModal(); refreshModals()">Fermer</button>
+            </div>
+
           </div>
         </div>
       </div>
