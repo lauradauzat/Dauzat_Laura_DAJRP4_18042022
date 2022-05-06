@@ -19,6 +19,7 @@ const form = document.getElementById('form');
 const divFirst = document.getElementById('divFirst'); 
 const divLast = document.getElementById('divLast'); 
 const divMail = document.getElementById('divMail'); 
+const divBirth =  document.getElementById('divBirth'); 
 const divQuantity = document.getElementById('divQuantity'); 
 const divCu = document.getElementById('divCu'); 
 const conf = document.getElementById("confirmation");
@@ -59,8 +60,10 @@ let firstOk = false;
 let lastOk = false; 
 let emailOk  = false; 
 let quantityOk = false; 
+let birthOk = false; 
 let locationOk = false; 
 let cuOk = true; 
+
 
 //regex 
 //General Email Regex (RFC 5322 Official Standard)
@@ -119,6 +122,19 @@ function checkValue(e) {
         console.log('email ' + emailOk);
         break;
 
+    case "birthdate" : 
+        console.log('birthdate : ' + value); 
+        if (value != ''){
+            birthOk = true; 
+            console.log('birth true');
+            divBirth.setAttribute('data-error-visible', 'false'); 
+        } else {
+            birthOk = false ;
+            console.log('birth false'); 
+            divBirth.setAttribute('data-error-visible', 'true'); 
+        }
+        break;   
+
     case "quantity" :
 
         console.log('quantity'); 
@@ -169,7 +185,7 @@ form.addEventListener('submit', handleSubmit);
 function handleSubmit(e) {
   console.log('handleSubmit');
   e.preventDefault();
-  if (firstOk && lastOk && emailOk && quantityOk && locationOk && cuOk){
+  if (firstOk && lastOk && emailOk && birthOk && quantityOk && locationOk && cuOk){
     console.log('true');
     openConfirmationModal();
     return true; 
@@ -186,6 +202,10 @@ function handleSubmit(e) {
 
     if(!emailOk){
       divMail.setAttribute('data-error-visible', 'true'); 
+    }
+
+    if(!birthOk){
+      divBirth.setAttribute('data-error-visible', 'true'); 
     }
 
     if(!quantityOk){
