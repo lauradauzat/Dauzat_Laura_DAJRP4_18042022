@@ -1,16 +1,8 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-//const formData = document.querySelectorAll(".formData");
 const close = document.getElementById("closeModal");
 const inputs = document.querySelectorAll("input"); 
 const closeBtn = document.getElementById("closeModal"); 
@@ -24,37 +16,6 @@ const divQuantity = document.getElementById('divQuantity');
 const divCu = document.getElementById('divCu'); 
 const conf = document.getElementById("confirmation");
 
-
-
-
-
-
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
-}
-
-
-
-//lauch close modal event
-closeBtn.addEventListener("click", closeModal); 
-function closeModal() {
-  console.log("clicked");
-  if (conf.style.display == "flex") {
-    refreshModals(); 
-  }
-  modalbg.style.display = "none"; 
-}
-
-
-//logique de controle des données 
-inputs.forEach((input) => input.addEventListener("change", checkValue));
-
-
 //setting checks for inputs 
 let firstOk = false; 
 let lastOk = false; 
@@ -64,6 +25,17 @@ let birthOk = false;
 let locationOk = false; 
 let cuOk = true; 
 
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+//lauch close modal event
+closeBtn.addEventListener("click", closeModal); 
+
+//logique de controle des données 
+inputs.forEach((input) => input.addEventListener("change", checkValue));
+
+//écoute le submit button
+form.addEventListener('submit', handleSubmit);
 
 //regex 
 //General Email Regex (RFC 5322 Official Standard)
@@ -73,12 +45,30 @@ numReg = /^\d+$/;
 nameReg = /[a-zA-Z]/;
 
 
+//responsive navbar
+function editNav() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
 
+function launchModal() {
+  modalbg.style.display = "block";
+}
+
+function closeModal() {
+  console.log("clicked");
+  if (conf.style.display == "flex") {
+    refreshModals(); 
+  }
+  modalbg.style.display = "none"; 
+}
 
 function checkValue(e) {
   const value = e.target.value; 
-  
-  
   
   switch(e.target.name) {
     case "first" : 
@@ -178,9 +168,6 @@ function checkValue(e) {
 
 
 }
-
-form.addEventListener('submit', handleSubmit);
-
 
 function handleSubmit(e) {
   console.log('handleSubmit');
